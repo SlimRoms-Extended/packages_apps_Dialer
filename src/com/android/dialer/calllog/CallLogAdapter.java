@@ -498,7 +498,10 @@ public class CallLogAdapter extends GroupingListAdapter
 
         int count = getGroupSize(position);
 
-        final String phoneNumber = c.getString(CallLogQuery.NUMBER);
+        String phoneNumber = c.getString(CallLogQuery.NUMBER);
+        if (phoneNumber == null) {
+            phoneNumber = "";
+        }
         Pattern pattern = Pattern.compile("[,;]");
         String[] num = pattern.split(phoneNumber);
         final String number = num.length > 0 ? num[0] : "";
