@@ -201,10 +201,9 @@ public class CallButtonPresenter extends Presenter<CallButtonPresenter.CallButto
         if (getUi() != null) {
             getUi().setSupportedAudio(mask);
 
-            // toggle the visibility of audio button
-            getUi().showButton(BUTTON_AUDIO, shouldAudioButtonShow());
-            getUi().updateButtonStates();
-            getUi().updateColors();
+            if (mCall != null) {
+                updateButtonsState(mCall);
+            }
         }
     }
 
